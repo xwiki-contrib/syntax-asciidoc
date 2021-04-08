@@ -1,0 +1,16 @@
+= Test document
+
+== Title 1
+
+Hello, world!
+
+== Title 2
+
+=== Sub-title
+
+This is _some text_.
+
+This is an *emphasis*.
+
+NOTE: some note
+

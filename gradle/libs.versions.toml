@@ -1,0 +1,22 @@
+[versions]
+asciidoctorj = "2.4.3"
+groovy = "2.5.14"
+junit = "4.13.1"
+spock = "1.3-groovy-2.5"
+xwiki = "11.10.5"
+
+[libraries]
+xwiki-commons-componentApi = { module = "org.xwiki.commons:xwiki-commons-component-api", version.ref = "xwiki" }
+xwiki-rendering-api = { module = "org.xwiki.rendering:xwiki-rendering-api", version.ref = "xwiki" }
+xwiki-rendering-syntax-plain = { module = "org.xwiki.rendering:xwiki-rendering-syntax-plain", version.ref = "xwiki" }
+
+asciidoctorj = { module = "org.asciidoctor:asciidoctorj", version.ref = "asciidoctorj" }
+
+groovy-core = { module = "org.codehaus.groovy:groovy", version.ref = "groovy" }
+junit = "junit:junit:4.13.1"
+spock = { module = "org.spockframework:spock-core", version.ref = "spock" }
+
+test-xwiki-commons-tool-testComponent = { module = "org.xwiki.commons:xwiki-commons-tool-test-component", version.ref = "xwiki" }
+
+[bundles]
+test-commonLibraries = ["groovy-core", "junit", "spock"]
