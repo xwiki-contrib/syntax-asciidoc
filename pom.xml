@@ -29,7 +29,7 @@
   </parent>
   <groupId>org.xwiki.contrib.asciidoc</groupId>
   <artifactId>syntax-asciidoc</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.1-SNAPSHOT</version>
   <name>AsciiDoc Syntax - Parent POM</name>
   <description>Parent POM for AsciiDoc syntax modules</description>
   <packaging>pom</packaging>

@@ -184,9 +184,13 @@ public class AsciiDocStreamParser implements StreamParser, Initializable
             && reference.getReference().startsWith(MAILTO_SCHEME_PREFIX);
     }
 
-    private void parsePlain(String text, Listener listener) throws ParseException
+    private void parsePlain(String text, Listener listener, boolean removeTopLevelBock) throws ParseException
     {
         XDOM xdom = this.htmlParser.parse(new StringReader(text));
+        if (removeTopLevelBock && xdom.getChildren().size() > 0) {
+            org.xwiki.rendering.block.Block topLevelBlock = xdom.getChildren().get(0);
+            xdom.replaceChild(topLevelBlock.getChildren(), topLevelBlock);
+        }
         for (org.xwiki.rendering.block.Block block : xdom.getChildren()) {
             block.traverse(listener);
         }
@@ -198,7 +202,7 @@ public class AsciiDocStreamParser implements StreamParser, Initializable
             listener.beginSection(emptyMap());
         }
         listener.beginHeader(levelOf(section.getLevel()), section.getId(), emptyMap());
-        parsePlain(section.getTitle(), listener);
+        parsePlain(section.getTitle(), listener, true);
         listener.endHeader(levelOf(section.getLevel()), section.getId(), emptyMap());
         for (int i = 0; i < section.getLevel(); i++) {
             listener.endSection(emptyMap());
