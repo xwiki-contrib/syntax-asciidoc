@@ -1,0 +1,16 @@
+.#--------------------------------------------------------------
+.input|asciidoc/1.0
+.# AsciiDoc doesn't support mailto links without labels so we
+.# cannot use the CTS to validate that, hence this special test.
+.#--------------------------------------------------------------
+mailto:john@doe.com[label]
+.#-----------------------------------------------------
+.expect|event/1.0
+.#-----------------------------------------------------
+beginDocument
+beginParagraph
+beginLink [Typed = [true] Type = [mailto] Reference = [john@doe.com]] [false]
+onWord [label]
+endLink [Typed = [true] Type = [mailto] Reference = [john@doe.com]] [false]
+endParagraph
+endDocument

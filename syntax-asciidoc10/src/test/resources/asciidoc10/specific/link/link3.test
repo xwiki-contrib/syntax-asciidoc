@@ -1,0 +1,24 @@
+.#--------------------------------------------------------------
+.input|asciidoc/1.0
+.# We cannot use the CTS to validate this since AsciiDoc will
+.# only provide the link in HTML in the AST and we cannot know
+.# whether it's a freestanding link or not (and it'll always
+.# use a label).
+.#--------------------------------------------------------------
+http://xwiki.org
+.#-----------------------------------------------------
+.expect|event/1.0
+.#-----------------------------------------------------
+beginDocument
+beginParagraph
+beginLink [Typed = [true] Type = [url] Reference = [http://xwiki.org]] [false]
+onWord [http]
+onSpecialSymbol [:]
+onSpecialSymbol [/]
+onSpecialSymbol [/]
+onWord [xwiki]
+onSpecialSymbol [.]
+onWord [org]
+endLink [Typed = [true] Type = [url] Reference = [http://xwiki.org]] [false]
+endParagraph
+endDocument

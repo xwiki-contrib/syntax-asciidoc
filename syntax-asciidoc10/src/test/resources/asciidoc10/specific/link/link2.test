@@ -1,0 +1,16 @@
+.#--------------------------------------------------------------
+.input|asciidoc/1.0
+.# Links to a doc reference in wiki mode (CTS checks in non-wiki
+.# mode).
+.#--------------------------------------------------------------
+link:reference[label]
+.#-----------------------------------------------------
+.expect|event/1.0
+.#-----------------------------------------------------
+beginDocument
+beginParagraph
+beginLink [Typed = [false] Type = [doc] Reference = [reference]] [false]
+onWord [label]
+endLink [Typed = [false] Type = [doc] Reference = [reference]] [false]
+endParagraph
+endDocument

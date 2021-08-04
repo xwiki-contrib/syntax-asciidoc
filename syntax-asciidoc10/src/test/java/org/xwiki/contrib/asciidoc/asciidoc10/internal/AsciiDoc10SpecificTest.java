@@ -21,7 +21,9 @@ package org.xwiki.contrib.asciidoc.asciidoc10.internal;
 
 import org.junit.runner.RunWith;
 import org.xwiki.rendering.test.integration.RenderingTestSuite;
+import org.xwiki.rendering.wiki.WikiModel;
 import org.xwiki.test.annotation.AllComponents;
+import org.xwiki.test.mockito.MockitoComponentManager;
 
 /**
  * Run all specific tests found in {@code *.test} files located in the classpath. These {@code *.test} files must follow
@@ -34,4 +36,11 @@ import org.xwiki.test.annotation.AllComponents;
 @AllComponents
 public class AsciiDoc10SpecificTest
 {
+    @RenderingTestSuite.Initialized
+    public void initialize(MockitoComponentManager componentManager) throws Exception
+    {
+        // Make sure we're in Wiki Mode so that parsed resource reference of type "doc:" (for example) are not
+        // considered as URL types.
+        componentManager.registerMockComponent(WikiModel.class);
+    }
 }
