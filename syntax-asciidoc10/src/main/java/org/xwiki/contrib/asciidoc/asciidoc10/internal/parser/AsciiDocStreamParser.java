@@ -194,11 +194,15 @@ public class AsciiDocStreamParser implements StreamParser, Initializable
 
     private void visitSection(Section section, Listener listener) throws ParseException
     {
-        listener.beginSection(emptyMap());
+        for (int i = 0; i < section.getLevel(); i++) {
+            listener.beginSection(emptyMap());
+        }
         listener.beginHeader(levelOf(section.getLevel()), section.getId(), emptyMap());
         parsePlain(section.getTitle(), listener);
         listener.endHeader(levelOf(section.getLevel()), section.getId(), emptyMap());
-        listener.endSection(emptyMap());
+        for (int i = 0; i < section.getLevel(); i++) {
+            listener.endSection(emptyMap());
+        }
     }
 
     private static HeaderLevel levelOf(int level)
