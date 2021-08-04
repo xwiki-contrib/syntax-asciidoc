@@ -1,1 +1,0 @@
-org.xwiki.contrib.syntax.asciidoctor.parser.internal.DefaultAsciidoctorParser

@@ -1,0 +1,70 @@
+.#-----------------------------------------------------
+.input|asciidoc/1.0
+.# AsciiDoc doesn't support level so we cannot use the
+.# CTS to validate sections, hence this special test.
+.#-----------------------------------------------------
+== Title level 1
+=== Title level 2
+==== Title level 3
+===== Title level 4
+====== Title level 5
+.#-----------------------------------------------------
+.expect|event/1.0
+.#-----------------------------------------------------
+beginDocument
+beginSection
+beginHeader [1, _title_level_1]
+beginParagraph
+onWord [Title]
+onSpace
+onWord [level]
+onSpace
+onWord [1]
+endParagraph
+endHeader [1, _title_level_1]
+endSection
+beginSection
+beginHeader [2, _title_level_2]
+beginParagraph
+onWord [Title]
+onSpace
+onWord [level]
+onSpace
+onWord [2]
+endParagraph
+endHeader [2, _title_level_2]
+endSection
+beginSection
+beginHeader [3, _title_level_3]
+beginParagraph
+onWord [Title]
+onSpace
+onWord [level]
+onSpace
+onWord [3]
+endParagraph
+endHeader [3, _title_level_3]
+endSection
+beginSection
+beginHeader [4, _title_level_4]
+beginParagraph
+onWord [Title]
+onSpace
+onWord [level]
+onSpace
+onWord [4]
+endParagraph
+endHeader [4, _title_level_4]
+endSection
+beginSection
+beginHeader [5, _title_level_5]
+beginParagraph
+onWord [Title]
+onSpace
+onWord [level]
+onSpace
+onWord [5]
+endParagraph
+endHeader [5, _title_level_5]
+endSection
+endDocument

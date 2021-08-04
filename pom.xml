@@ -1,58 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) any later version.
-
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Lesser General Public License for more details.
-
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.xwiki.contrib</groupId>
-  <artifactId>syntax-asciidoctor-parent</artifactId>
+  <parent>
+    <groupId>org.xwiki.contrib</groupId>
+    <artifactId>parent-rendering</artifactId>
+    <version>13.4</version>
+  </parent>
+  <groupId>org.xwiki.contrib.asciidoc</groupId>
+  <artifactId>syntax-asciidoc</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>XWiki Syntax - Asciidoctor Parent</name>
-  <description>XWiki Syntax - Asciidoctor</description>
+  <name>AsciiDoc Syntax - Parent POM</name>
+  <description>Parent POM for AsciiDoc syntax modules</description>
   <packaging>pom</packaging>
+  <scm>
+    <connection>scm:git:git://github.com/xwiki-contrib/syntax-asciidoc.git</connection>
+    <developerConnection>scm:git:git@github.com:xwiki-contrib/syntax-asciidoc.git</developerConnection>
+    <url>https://github.com/xwiki-contrib/syntax-asciidoc/tree/master</url>
+    <tag>HEAD</tag>
+  </scm>
   <properties>
-    <commons.version>11.10.5</commons.version>
+    <!-- Issue management -->
+    <xwiki.release.jira.skip>false</xwiki.release.jira.skip>
+    <xwiki.issueManagement.jira.id>XASCIIDOC</xwiki.issueManagement.jira.id>
   </properties>
+  <developers>
+    <developer>
+      <id>melix</id>
+      <name>Cédric Champeau</name>
+    </developer>
+    <developer>
+      <id>vmassol</id>
+      <name>Vincent Massol</name>
+    </developer>
+    <developer>
+      <id>tcaras</id>
+      <name>Teodor Caras</name>
+    </developer>
+  </developers>
   <modules>
-    <module>syntax-asciidoctor</module>
+    <module>syntax-asciidoc10</module>
   </modules>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.2</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <dependencies>
-    <dependency>
-      <groupId>org.xwiki.commons</groupId>
-      <artifactId>xwiki-commons-component-api</artifactId>
-      <version>${commons.version}</version>
-    </dependency>
-    <!-- Testing dependencies -->
-    <dependency>
-      <groupId>org.xwiki.commons</groupId>
-      <artifactId>xwiki-commons-tool-test-component</artifactId>
-      <version>${commons.version}</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
 </project>

@@ -1,0 +1,3 @@
+org.xwiki.contrib.asciidoc.asciidoc10.internal.parser.AsciiDocSyntaxProvider
+org.xwiki.contrib.asciidoc.asciidoc10.internal.parser.AsciiDocParser
+org.xwiki.contrib.asciidoc.asciidoc10.internal.parser.AsciiDocStreamParser
