@@ -1,0 +1,69 @@
+.#--------------------------------------------------------------
+.input|asciidoc/1.0
+.#--------------------------------------------------------------
+* normal, _italic_, *bold*, +mono+.
+* ``double quoted'', `single quoted'.
+* normal, ^super^, ~sub~.
+* `passthru *bold*`
+.#-----------------------------------------------------
+.expect|event/1.0
+.#-----------------------------------------------------
+beginDocument
+beginList [BULLETED]
+beginListItem
+onWord [normal]
+onSpecialSymbol [,]
+onSpace
+beginFormat [ITALIC]
+onWord [italic]
+endFormat [ITALIC]
+onSpecialSymbol [,]
+onSpace
+beginFormat [BOLD]
+onWord [bold]
+endFormat [BOLD]
+onSpecialSymbol [,]
+onSpace
+onWord [mono]
+onSpecialSymbol [.]
+endListItem
+beginListItem
+onSpecialSymbol [`]
+onSpecialSymbol [`]
+onWord [double]
+onSpace
+onWord [quoted]
+onSpecialSymbol [']
+onSpecialSymbol [']
+onSpecialSymbol [,]
+onSpace
+onSpecialSymbol [`]
+onWord [single]
+onSpace
+onWord [quoted]
+onSpecialSymbol [']
+onSpecialSymbol [.]
+endListItem
+beginListItem
+onWord [normal]
+onSpecialSymbol [,]
+onSpace
+beginFormat [SUPERSCRIPT]
+onWord [super]
+endFormat [SUPERSCRIPT]
+onSpecialSymbol [,]
+onSpace
+beginFormat [SUBSCRIPT]
+onWord [sub]
+endFormat [SUBSCRIPT]
+onSpecialSymbol [.]
+endListItem
+beginListItem
+onWord [passthru]
+onSpace
+beginFormat [BOLD]
+onWord [bold]
+endFormat [BOLD]
+endListItem
+endList [BULLETED]
+endDocument
