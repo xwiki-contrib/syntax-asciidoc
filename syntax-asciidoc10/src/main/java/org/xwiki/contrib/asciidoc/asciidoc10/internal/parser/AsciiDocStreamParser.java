@@ -107,10 +107,8 @@ public class AsciiDocStreamParser implements StreamParser, Initializable
                 visitSection((Section) node, listener);
             } else if (node instanceof org.asciidoctor.ast.List) {
                 visitList((org.asciidoctor.ast.List) node, listener);
-            } else if (node instanceof Block) {
-                if (node.getContext().equals("paragraph")) {
-                    visitParagraph(node, listener);
-                }
+            } else if (node instanceof Block && node.getContext().equals("paragraph")) {
+                visitParagraph(node, listener);
             }
         }
     }
