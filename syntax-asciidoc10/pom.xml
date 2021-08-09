@@ -31,7 +31,7 @@
   <name>AsciiDoc Syntax - AsciiDoc Syntax 1.0</name>
   <description>AsciiDoc Syntax 1.0</description>
   <properties>
-    <asciidoctor>2.4.3</asciidoctor>
+    <asciidoctorj.version>2.5.2</asciidoctorj.version>
     <xwiki.jacoco.instructionRatio>0.93</xwiki.jacoco.instructionRatio>
     <!-- Name to display by the Extension Manager -->
     <xwiki.extension.name>AsciiDoc Syntax 1.0</xwiki.extension.name>
@@ -62,7 +62,7 @@
     <dependency>
       <groupId>org.asciidoctor</groupId>
       <artifactId>asciidoctorj</artifactId>
-      <version>${asciidoctor}</version>
+      <version>${asciidoctorj.version}</version>
       <exclusions>
         <exclusion>
           <groupId>javax.annotation</groupId>
