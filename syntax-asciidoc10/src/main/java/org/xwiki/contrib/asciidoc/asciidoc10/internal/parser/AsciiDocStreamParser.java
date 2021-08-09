@@ -30,6 +30,7 @@ import javax.inject.Singleton;
 
 import org.apache.commons.io.IOUtils;
 import org.asciidoctor.Asciidoctor;
+import org.asciidoctor.Options;
 import org.asciidoctor.ast.Block;
 import org.asciidoctor.ast.Document;
 import org.asciidoctor.ast.ListItem;
@@ -86,7 +87,7 @@ public class AsciiDocStreamParser implements StreamParser, Initializable
         MetaData metadata = new MetaData(Collections.singletonMap(MetaData.SYNTAX, getSyntax()));
         listener.beginDocument(metadata);
         try {
-            visitDocument(this.asciidoctor.load(IOUtils.toString(source), emptyMap()), listener);
+            visitDocument(this.asciidoctor.load(IOUtils.toString(source), Options.builder().build()), listener);
         } catch (IOException e) {
             throw new ParseException("Failed to parse AsciiDoc content", e);
         }
@@ -107,12 +108,8 @@ public class AsciiDocStreamParser implements StreamParser, Initializable
             } else if (node instanceof org.asciidoctor.ast.List) {
                 visitList((org.asciidoctor.ast.List) node, listener);
             } else if (node instanceof Block) {
-                switch (node.getContext()) {
-                    case "paragraph":
-                        visitParagraph(node, listener);
-                        break;
-                    default:
-                        // Nothing to do, we just ignore elements we don't understand for the moment.
+                if (node.getContext().equals("paragraph")) {
+                    visitParagraph(node, listener);
                 }
             }
         }

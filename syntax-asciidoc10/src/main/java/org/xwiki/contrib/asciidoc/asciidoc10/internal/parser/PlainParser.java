@@ -44,12 +44,12 @@ public class PlainParser extends AbstractParser implements org.xwiki.contrib.asc
 {
     @Inject
     @Named("plain/1.0")
-    private Parser plainParser;
+    private Parser parser;
 
     @Override
     public void parse(String text, Listener listener, boolean removeTopLevelBock) throws ParseException
     {
-        XDOM xdom = this.plainParser.parse(new StringReader(text));
+        XDOM xdom = this.parser.parse(new StringReader(text));
         removeTopLevelBlock(xdom, removeTopLevelBock);
         for (org.xwiki.rendering.block.Block block : xdom.getChildren()) {
             block.traverse(listener);

@@ -30,7 +30,7 @@ public abstract class AbstractParser
 {
     protected void removeTopLevelBlock(XDOM xdom, boolean removeTopLevelBock)
     {
-        if (removeTopLevelBock && xdom.getChildren().size() > 0) {
+        if (removeTopLevelBock && !xdom.getChildren().isEmpty()) {
             org.xwiki.rendering.block.Block topLevelBlock = xdom.getChildren().get(0);
             xdom.replaceChild(topLevelBlock.getChildren(), topLevelBlock);
         }

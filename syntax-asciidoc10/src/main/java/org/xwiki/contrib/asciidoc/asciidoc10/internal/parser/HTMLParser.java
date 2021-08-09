@@ -26,6 +26,7 @@ import javax.inject.Named;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
+import org.apache.commons.lang3.StringUtils;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.component.manager.ComponentManager;
 import org.xwiki.rendering.block.LinkBlock;
@@ -37,7 +38,6 @@ import org.xwiki.rendering.listener.reference.ResourceType;
 import org.xwiki.rendering.parser.ParseException;
 import org.xwiki.rendering.parser.Parser;
 import org.xwiki.rendering.wiki.WikiModel;
-import org.xwiki.text.StringUtils;
 
 import static org.xwiki.rendering.block.Block.Axes.DESCENDANT;
 
@@ -56,7 +56,7 @@ public class HTMLParser extends AbstractParser implements org.xwiki.contrib.asci
 
     @Inject
     @Named("html/4.01")
-    private Parser htmlParser;
+    private Parser parser;
 
     @Inject
     @Named("context")
@@ -65,7 +65,7 @@ public class HTMLParser extends AbstractParser implements org.xwiki.contrib.asci
     @Override
     public void parse(String text, Listener listener, boolean removeTopLevelBock) throws ParseException
     {
-        XDOM xdom = this.htmlParser.parse(new StringReader(text));
+        XDOM xdom = this.parser.parse(new StringReader(text));
         removeTopLevelBlock(xdom, removeTopLevelBock);
 
         // Step 1: Fix links
