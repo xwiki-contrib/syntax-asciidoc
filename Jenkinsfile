@@ -26,11 +26,5 @@
 
 node('docker') {
     xwikiBuild {
-        xvnc = false
-        goals = 'clean deploy jacoco:report sonar:sonar'
-        profiles = 'quality'
-        sonar = true
-        // Java 11+ is required for Sonar/Sonarcloud
-        javaTool = 'java11'
     }
 }
